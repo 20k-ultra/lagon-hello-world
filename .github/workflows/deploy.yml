@@ -1,0 +1,19 @@
+name: Lagon
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy Lagon Function
+        uses: 20k-ultra/github-action@init
+        with:
+          lagon_token: ${{ secrets.LAGON_API_TOKEN }}
+      - name: Log Function preview link
+        run: |
+          url=$(grep -o 'https://[^[:space:]]*' lagon.output)
+          echo "Function preview available at: $url"
