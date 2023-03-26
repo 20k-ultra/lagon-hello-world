@@ -1,0 +1,7 @@
+{
+  "function_id": "${{ vars.lagon_function_id }}",
+  "organization_id": "${{ vars.lagon_org_id }}",
+  "index": "hello.ts",
+  "client": null,
+  "assets": null
+}

@@ -8,21 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy
     steps:
-      - uses: actions/checkout@v3
-      - name: Deploy Lagon Function
-        uses: 20k-ultra/github-action@init
+      - uses: actions/checkout@v2
+      - uses: 20k-ultra/github-action@init
         with:
           lagon_token: ${{ secrets.LAGON_API_TOKEN }}
-          command: deploy
-          config: |
-            {
-              "function_id": "clflva1m40001mm08h4jgj2bs",
-              "organization_id": "clf9d92oo0003mf08qd8lag6q",
-              "index": "hello.ts",
-              "client": null,
-              "assets": null
-            }
-      - name: Log Function preview link
+      - name: Log Function URL
         run: |
           url=$(grep -o 'https://[^[:space:]]*' lagon.output)
-          echo "Function preview available at: $url"
+          echo "Function available at: $url"
